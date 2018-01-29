@@ -1,0 +1,17 @@
+<a routerLink="/NewCustomer" class="btn btn-primary">New Customer</a>
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>CustomerId</th>
+        <th>Name</th> 
+        <th>ContactNo</th>
+        <th>Active</th>
+    </tr>
+    <tr *ngFor="let customer of customerList; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{customer.customerid}}</td>
+        <td><a [routerLink]="['/Customer', customer._id]" >{{customer.name}}</a></td>
+        <td>{{customer.contactno}}</td>
+        <td>{{customer.active}}</td>
+    </tr>
+  </table> 

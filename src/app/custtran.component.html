@@ -1,0 +1,17 @@
+<a routerLink="/NewTrans" class="btn btn-primary">New Transaction</a>
+<table class="table">
+  <tr>
+      <th>#</th>
+      <th>CustomerId</th>
+      <th>When</th> 
+      <th>Ltr</th>
+      <th>Date</th>
+  </tr>
+  <tr *ngFor="let tran of custTranList; let i = index">
+      <td>{{i + 1}}</td>
+      <td><a [routerLink]="['/CustTransaction', tran._id]" >{{tran.customerid}}</a></td>
+      <td>{{tran.when}}</td>
+      <td>{{tran.ltr}}</td>
+      <td>{{tran.createddt}}</td>
+  </tr>
+</table> 

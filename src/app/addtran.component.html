@@ -1,0 +1,15 @@
+<div class="container">
+	<h1>Add Transaction</h1>
+	<p>Customer ID</p>
+	<input [(ngModel)]="customerid" type="text" class="form-control">
+
+	<p>When</p>
+	<input type="radio" value="AM" name="when"  [(ngModel)]="when"> AM
+  <input type="radio" value="PM" name="when"  [(ngModel)]="when"> PM
+
+	<p>Ltr</p>
+	<input [(ngModel)]="ltr" type="text" class="form-control">
+	
+
+	<Button (click)="addCustTran()" class="btn btn-primary">Submit</Button>
+</div>
