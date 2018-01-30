@@ -50,6 +50,6 @@ export class ApiService
     }
     login(logindata)
     {
-        this.http.post(this.path + '/user/login',logindata).map(res =>res)
+        return this.http.post(this.path + '/user/login',logindata).map(res =>res)
     }
 }

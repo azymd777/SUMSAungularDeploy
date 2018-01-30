@@ -14,7 +14,7 @@ import { AddcustomerComponent } from './addcustomer.component';
 import { AddtranComponent } from './addtran.component';
 
 const routes = [
-  { path: '', component: CustomerComponent },
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'Customer', component: CustomerComponent },
   { path: 'CustTransaction', component: CusttranComponent },
