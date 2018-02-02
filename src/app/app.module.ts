@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ApiService } from './api.service';
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './authguard.service';
 import { MenubarComponent } from './core/menubar.component';
 import { LoginComponent } from './core/login.component';
 import { CustomerComponent } from './customer.component';
@@ -13,16 +15,19 @@ import { CusttranComponent } from './custtran.component';
 import { AddcustomerComponent } from './addcustomer.component';
 import { AddtranComponent } from './addtran.component';
 
+
+
 const routes = [
-  { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'Customer', component: CustomerComponent },
-  { path: 'CustTransaction', component: CusttranComponent },
-  { path: 'Customer/:id', component: AddcustomerComponent },
-  { path: 'NewCustomer', component: AddcustomerComponent },
-  { path: 'CustTransaction/:id', component: AddtranComponent },
-  { path: 'NewTrans', component: AddtranComponent },
-]
+    { path: 'login', component: LoginComponent },
+    { path: '', canActivate:[AuthGuardService], children: [
+    { path: 'Customer', component: CustomerComponent },
+    { path: 'CustTransaction', component: CusttranComponent },
+    { path: 'Customer/:id', component: AddcustomerComponent },
+    { path: 'NewCustomer', component: AddcustomerComponent },
+    { path: 'CustTransaction/:id', component: AddtranComponent },
+    { path: 'NewTrans', component: AddtranComponent }
+  ]}
+];
 
 @NgModule({
   declarations: [
@@ -40,7 +45,7 @@ const routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ApiService],
+  providers: [ApiService,AuthService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

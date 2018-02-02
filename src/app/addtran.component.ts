@@ -8,8 +8,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddtranComponent implements OnInit {
 
-  _id: string
+
+  _id: string;
+  cmrid:string;
   customerid: string;
+  customername: string;
+  textdisplay: string = "ADD"
 	when: string;
   ltr: string;
   	
@@ -25,6 +29,7 @@ export class AddtranComponent implements OnInit {
       if(params["id"]) {
         this._id = params["id"];
         this.editMode = true;
+        this.textdisplay ="EDIT"
         console.log(this.editMode);
         this.apiservice.getCustTransById(this._id).subscribe(customer => {
           this.customerid = customer.customerid;
@@ -58,6 +63,13 @@ export class AddtranComponent implements OnInit {
       });
     }
   }
+  focusOutFunction()
+  {
+      this.apiservice.getCustomerById(this.cmrid).subscribe(customer => {
+        this.customerid = customer._id;
+        this.customername = customer.name;
+  });
+ }
 
 }
 

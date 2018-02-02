@@ -16,7 +16,7 @@ export class AddcustomerComponent implements OnInit {
 	add1: string;
 	add2: string;
 	pincode: string;
-	
+	textdisplay: string = "ADD"
   editMode: boolean = false;
 
 
@@ -30,6 +30,7 @@ export class AddcustomerComponent implements OnInit {
       if(params["id"]) {
         this._id = params["id"];
         this.editMode = true;
+        this.textdisplay ="EDIT"
         console.log(this.editMode);
         this.apiservice.getCustomerById(this._id).subscribe(customer => {
           this.customerid = customer.customerid;
@@ -59,7 +60,7 @@ export class AddcustomerComponent implements OnInit {
         }
       }
 
-      this.apiservice.updateCustomer(this._id,customerData).subscribe(result => {
+      this.apiservice.updateCustomer(this.customerid,customerData).subscribe(result => {
           this.router.navigate(["/Customer"]);       
       });
     } else {

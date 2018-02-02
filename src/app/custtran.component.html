@@ -1,17 +1,22 @@
+Enter Customer ID: <input [(ngModel)]="cmrid" type="number" >	
+<input [(ngModel)]="frmdate" type="date" >
+<input [(ngModel)]="todate" type="date" >
+<Button (click)="searchTran()" class="btn btn-primary">Search</Button>
 <a routerLink="/NewTrans" class="btn btn-primary">New Transaction</a>
 <table class="table">
   <tr>
       <th>#</th>
-      <th>CustomerId</th>
+      <th>Customer Name</th>
       <th>When</th> 
       <th>Ltr</th>
       <th>Date</th>
   </tr>
-  <tr *ngFor="let tran of custTranList; let i = index">
+  <tr *ngFor="let tran of custTranList; let i = index">      
       <td>{{i + 1}}</td>
-      <td><a [routerLink]="['/CustTransaction', tran._id]" >{{tran.customerid}}</a></td>
+      <td><a [routerLink]="['/CustTransaction', tran._id]" >{{tran.customerid.name}}</a></td>
       <td>{{tran.when}}</td>
       <td>{{tran.ltr}}</td>
-      <td>{{tran.createddt}}</td>
+      <td>{{tran.createddt.substring(0,10)}}</td>
   </tr>
+  <tr> <td colspan="3" style="text-align:right">Total</td><td style="text-align:left">{{total}}</td></tr>
 </table> 

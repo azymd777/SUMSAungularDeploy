@@ -1,13 +1,13 @@
 <div class="container">
-	<h1>Add Customer</h1>
+	<h1>{{textdisplay}} Customer</h1>
 	<p>Customer ID</p>
-	<input [(ngModel)]="customerid" type="text" class="form-control">
+	<input [(ngModel)]="customerid" type="number" class="form-control">
 
 	<p>Name</p>
 	<input [(ngModel)]="name" type="text" class="form-control">
 
 	<p>Contact No</p>
-	<input [(ngModel)]="contactno" type="text" class="form-control">
+	<input [(ngModel)]="contactno" type="number" class="form-control">
 
 	<p>Address1</p>
 	<input [(ngModel)]="add1" type="text" class="form-control">
@@ -16,7 +16,7 @@
 	<input [(ngModel)]="add2" type="text" class="form-control">
 
 	<p>PinCode</p>
-	<input [(ngModel)]="pincode" type="text" class="form-control">
+	<input [(ngModel)]="pincode" type="number" class="form-control">
 	
 
 	<Button (click)="addCustomer()" class="btn btn-primary">Submit</Button>

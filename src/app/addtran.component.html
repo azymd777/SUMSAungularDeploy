@@ -1,15 +1,16 @@
 <div class="container">
-	<h1>Add Transaction</h1>
-	<p>Customer ID</p>
-	<input [(ngModel)]="customerid" type="text" class="form-control">
-
+	<h1>{{textdisplay}} Transaction</h1>
+    <div *ngIf="!editMode">
+		<p>Enter Customer ID:</p> <input [(ngModel)]="cmrid" type="number" (focusout)="focusOutFunction()" class="form-control">	
+	</div>
+	<p>Customer Transaction ID:</p> <input disabled [(ngModel)]="customerid" type="text" class="form-control">
+	<p>Customer Name: <label for="customerid">{{customername}}</label> </p>
+	
 	<p>When</p>
 	<input type="radio" value="AM" name="when"  [(ngModel)]="when"> AM
-  <input type="radio" value="PM" name="when"  [(ngModel)]="when"> PM
+  	<input type="radio" value="PM" name="when"  [(ngModel)]="when"> PM
 
 	<p>Ltr</p>
-	<input [(ngModel)]="ltr" type="text" class="form-control">
-	
-
+	<input [(ngModel)]="ltr" type="number" class="form-control">
 	<Button (click)="addCustTran()" class="btn btn-primary">Submit</Button>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     uid: string;
     pwd: string;    
     constructor(
-      private apiservice: ApiService,
+      private authservice: AuthService,
       private router: Router) {}
  
     login() {
@@ -22,20 +22,15 @@ export class LoginComponent implements OnInit {
           uid : this.uid,
           pwd : this.pwd
         }
-
-        this.apiservice.login(logindata).subscribe(result=>
-          {
-            console.log(result)
-          if(!result){ 
-            this.errorMsg = 'Failed to login';
-          }
-        else{
-          this.router.navigate(["/Customer"]);
-        }
-      }
-        )
-
-        
+    try{
+      this.authservice.login(logindata)
+      this.router.navigate(["/Customer"]);
+    }
+    catch(err)
+    {
+      console.log(err)
+      this.errorMsg = 'Failed to login';
+    }         
     }
 
 

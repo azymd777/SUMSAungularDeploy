@@ -48,8 +48,13 @@ export class ApiService
     {
         return this.http.post(this.path + '/custtran',custTrandata).map(res =>res)        
     }
+    searchCustTrans(searchData)
+    {
+        return this.http.post(this.path + '/custtran/search',searchData).map(res =>res.json())        
+    }
     login(logindata)
     {
         return this.http.post(this.path + '/user/login',logindata).map(res =>res)
     }
+
 }
